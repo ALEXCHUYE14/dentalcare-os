@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from 'react';
-import { ArrowLeft, CalendarDays, Eye, EyeOff, Lock, Mail, ShieldCheck, Stethoscope, User, Wallet } from 'lucide-react';
+import { ArrowLeft, CalendarDays, Eye, EyeOff, Lock, Mail, MessageCircle, ShieldCheck, Stethoscope, User, Wallet } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { useAuth } from '../context/AuthContext';
 import { cn } from '../utils/format';
@@ -8,6 +8,12 @@ type Mode = 'login' | 'register' | 'reset';
 
 /** Imagen de fondo del panel de marca (servida desde /public, respeta el `base` de Vite). */
 const LOGIN_BG = `${import.meta.env.BASE_URL}images/login-bg.jpg`;
+
+/** Soporte por WhatsApp para quien no pueda ingresar. */
+const SUPPORT_PHONE_LABEL = '+51 924 996 961';
+const SUPPORT_WHATSAPP_URL = `https://wa.me/51924996961?text=${encodeURIComponent(
+  'Hola, necesito ayuda para ingresar a DentalCare OS.',
+)}`;
 
 const features = [
   { icon: CalendarDays, text: 'Agenda multivista por doctor y sillón' },
@@ -288,6 +294,17 @@ export default function LoginPage() {
         </div>
 
         <footer className="mx-auto mt-auto flex w-full max-w-sm flex-col items-center gap-1 pt-8 text-center text-xs text-slate-400 lg:mt-6 lg:pt-0">
+          <a
+            href={SUPPORT_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-3 inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm text-emerald-800 transition hover:bg-emerald-100 active:bg-emerald-100"
+          >
+            <MessageCircle className="h-[18px] w-[18px] shrink-0 text-emerald-600" />
+            <span>
+              ¿Problemas para ingresar? <span className="font-semibold">Soporte: {SUPPORT_PHONE_LABEL}</span>
+            </span>
+          </a>
           <span className="inline-flex items-center gap-1.5">
             <ShieldCheck className="h-3.5 w-3.5" /> Conexión cifrada · datos clínicos protegidos
           </span>
