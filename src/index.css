@@ -12,6 +12,19 @@
 }
 
 html, body, #root { min-height: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/*
+ * iOS Safari hace zoom al enfocar campos con letra < 16 px. En pantallas táctiles se fuerza 16 px
+ * (regla sin capa: gana a las utilidades de Tailwind sin tocar cada componente).
+ */
+@media (pointer: coarse) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
 body {
   @apply bg-slate-50 text-slate-900 antialiased;
   -webkit-tap-highlight-color: transparent;

@@ -94,7 +94,7 @@ export default function AppLayout() {
   const current = items.find((i) => (i.to === '/' ? location.pathname === '/' : location.pathname.startsWith(i.to)));
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       {/* Sidebar escritorio / tablet */}
       <aside
         className={cn(

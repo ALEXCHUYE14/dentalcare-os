@@ -10,7 +10,7 @@ export function Spinner({ className }: { className?: string }) {
 
 export function FullScreenLoader() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex min-h-dvh items-center justify-center">
       <div className="flex flex-col items-center gap-3">
         <Spinner className="h-7 w-7" />
         <p className="text-sm text-slate-500">Cargando DentalCare OS…</p>
