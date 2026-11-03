@@ -293,21 +293,21 @@ export default function LoginPage() {
           </form>
         </div>
 
-        <footer className="mx-auto mt-auto flex w-full max-w-sm flex-col items-center gap-1 pt-8 text-center text-xs text-slate-400 lg:mt-6 lg:pt-0">
+        <footer className="mx-auto mt-auto flex w-full max-w-sm flex-col items-center gap-3 pt-8 text-center text-xs text-slate-400 lg:mt-6 lg:pt-0">
+          <span className="inline-flex items-center gap-1.5 text-[13px] text-sky-600/70">
+            <ShieldCheck className="h-4 w-4 shrink-0" /> Acceso exclusivo del personal autorizado
+          </span>
           <a
             href={SUPPORT_WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mb-3 inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm text-emerald-800 transition hover:bg-emerald-100 active:bg-emerald-100"
+            title={`WhatsApp ${SUPPORT_PHONE_LABEL}`}
+            aria-label={`¿Problemas para acceder? Contactar soporte por WhatsApp al ${SUPPORT_PHONE_LABEL}`}
+            className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-emerald-700 transition hover:text-emerald-800 hover:underline hover:underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 active:text-emerald-900"
           >
-            <MessageCircle className="h-[18px] w-[18px] shrink-0 text-emerald-600" />
-            <span>
-              ¿Problemas para ingresar? <span className="font-semibold">Soporte: {SUPPORT_PHONE_LABEL}</span>
-            </span>
+            <MessageCircle className="h-[18px] w-[18px] shrink-0" />
+            ¿Problemas para acceder? Contactar soporte
           </a>
-          <span className="inline-flex items-center gap-1.5">
-            <ShieldCheck className="h-3.5 w-3.5" /> Conexión cifrada · datos clínicos protegidos
-          </span>
           <span className="lg:hidden">© {new Date().getFullYear()} DentalCare OS</span>
         </footer>
       </main>
