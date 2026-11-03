@@ -6,6 +6,9 @@ import { cn } from '../utils/format';
 
 type Mode = 'login' | 'register' | 'reset';
 
+/** Imagen de fondo del panel de marca (servida desde /public, respeta el `base` de Vite). */
+const LOGIN_BG = `${import.meta.env.BASE_URL}images/login-bg.jpg`;
+
 const features = [
   { icon: CalendarDays, text: 'Agenda multivista por doctor y sillón' },
   { icon: Stethoscope, text: 'Expediente clínico y odontograma interactivo' },
@@ -97,7 +100,18 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-dvh flex-col bg-white lg:grid lg:grid-cols-[1.05fr_1fr] lg:bg-slate-50">
       {/* Panel de marca: escritorio */}
-      <aside className="relative hidden overflow-hidden bg-gradient-to-br from-sky-700 via-sky-600 to-teal-600 p-12 text-white lg:flex lg:flex-col lg:justify-between">
+      <aside className="relative hidden overflow-hidden bg-sky-800 p-12 text-white lg:flex lg:flex-col lg:justify-between">
+        {/* Foto de fondo + capas de color para mantener el contraste del texto */}
+        <img
+          src={LOGIN_BG}
+          alt=""
+          aria-hidden
+          loading="eager"
+          decoding="async"
+          className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover object-[center_30%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-900/85 via-sky-800/70 to-teal-700/75" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/30" />
         <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
         <div className="absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-teal-300/20 blur-3xl" />
         <div className="relative flex items-center gap-3">
@@ -124,7 +138,15 @@ export default function LoginPage() {
       </aside>
 
       {/* Cabecera de marca: móvil y tablet (respeta el notch / barra de estado) */}
-      <header className="relative overflow-hidden bg-gradient-to-br from-sky-700 via-sky-600 to-teal-600 px-6 pb-14 pt-[calc(env(safe-area-inset-top)+2.25rem)] text-white lg:hidden">
+      <header className="relative overflow-hidden bg-sky-800 px-6 pb-14 pt-[calc(env(safe-area-inset-top)+2.25rem)] text-white lg:hidden">
+        <img
+          src={LOGIN_BG}
+          alt=""
+          aria-hidden
+          decoding="async"
+          className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover object-[center_35%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-900/85 via-sky-800/75 to-teal-700/80" />
         <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
         <div className="absolute -bottom-24 -left-10 h-56 w-56 rounded-full bg-teal-300/25 blur-2xl" />
         <div className="relative mx-auto flex max-w-sm flex-col items-center text-center">
